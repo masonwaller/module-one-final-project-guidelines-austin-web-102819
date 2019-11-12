@@ -1,6 +1,0 @@
-mason = User.create(name: "Mason")
-q1 = Question.create(question: "How many rings does Kobe have?")
-a11 = Answer.create(answer: "5", correct: 1, question_id: 1)
-a12 = Answer.create(answer: "6", correct: 0, question_id: 1)
-a13 = Answer.create(answer: "3", correct: 0, question_id: 1)
-a14 = Answer.create(answer: "8", correct: 0, question_id: 1)
