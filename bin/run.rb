@@ -10,6 +10,7 @@ def welcome
      _| |_\\   |_  _| |__) |_/ /   \\ \\_  \\  `-'  \\_ | \\_/ |, | |  .' /_  
     |_____|\\____||_______/|____| |____|  `.___.\\__|'.__.'_/[___][_____] "
     puts logo
+    $score_out_of_ten = 0
     puts "===================================================================================================="
     puts "Welcome top the NBA Quiz!!!!"
 end
@@ -66,15 +67,29 @@ def delete_account
     end
 end
 def log
+    puts "==================================================="
     puts "Use control + c to exit game at any time."
+    puts "Instructions: Enter the answer you think is correct."
+    puts "==================================================="
 end
-
-
-
+def question1
+    question = Question.find(1)
+    puts question.question
+    puts answers1[0].answer
+    puts answers1[1].answer
+    puts answers1[2].answer
+    puts answers1[3].answer
+    puts "==================================================="
+    input = gets.chomp.to_s
+end
+def answers1
+    Answer.where("question_id = '1'")
+end
 def run
     welcome
     get_input
     log
+    question1
 end
 
 run
