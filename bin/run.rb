@@ -2,8 +2,16 @@ require_relative '../config/environment'
 require 'pry'
 
 def welcome
-puts "Welcome top the NBA Quiz!!!!"
-puts "===================================================================================================="
+    logo = "
+     ____  _____  ______        _          ___               _          
+    |_   \\|_   _||_   _ \\      / \\       .'   `.            (_)         
+      |   \\ | |    | |_) |    / _ \\     /  .-.  \\  __   _   __   ____   
+      | |\\ \\| |    |  __'.   / ___ \\    | |   | | [  | | | [  | [_   ]  
+     _| |_\\   |_  _| |__) |_/ /   \\ \\_  \\  `-'  \\_ | \\_/ |, | |  .' /_  
+    |_____|\\____||_______/|____| |____|  `.___.\\__|'.__.'_/[___][_____] "
+    puts logo
+    puts "===================================================================================================="
+    puts "Welcome top the NBA Quiz!!!!"
 end
 def get_input
     puts "1. Login"
@@ -33,12 +41,17 @@ def login
     end
 end
 def create_account
-    puts "Please enter your name."
+    puts "To create an account, please enter your name."
     name = gets.chomp.to_s
-    User.create(name: name)
-    puts "Thanks for creating an account."
-    current = User.find_by(name: name)
-    $logged_in = current.id
+    if User.find_by(name: name)
+        puts "Sorry that name is taken."
+        create_account
+    else
+        User.create(name: name)
+        puts "Thanks for creating an account."
+        current = User.find_by(name: name)
+        $logged_in = current.id
+    end
 end
 def delete_account
     puts "Enter your account name."
@@ -52,13 +65,16 @@ def delete_account
         get_input
     end
 end
+def log
+    puts "Use control + c to exit game at any time."
+end
 
 
 
 def run
     welcome
-    number = get_input
-    
+    get_input
+    log
 end
 
 run
