@@ -1,6 +1,6 @@
 require_relative '../config/environment'
 require 'pry'
-
+$array = []
 def welcome
     logo = "
      ____  _____  ______        _          ___               _          
@@ -10,7 +10,7 @@ def welcome
      _| |_\\   |_  _| |__) |_/ /   \\ \\_  \\  `-'  \\_ | \\_/ |, | |  .' /_  
     |_____|\\____||_______/|____| |____|  `.___.\\__|'.__.'_/[___][_____] "
     puts logo
-    $score_out_of_ten = 0
+    $logged_in = ""
     puts "===================================================================================================="
     puts "Welcome top the NBA Quiz!!!!"
 end
@@ -35,7 +35,7 @@ def login
     name = gets.chomp.to_s
     if User.find_by(name: name)
         current = User.find_by(name: name)
-        $logged_in = current.id
+        $logged_in = current.name
     else
         puts "That user does not exist"
         create_account
@@ -51,7 +51,7 @@ def create_account
         User.create(name: name)
         puts "Thanks for creating an account."
         current = User.find_by(name: name)
-        $logged_in = current.id
+        $logged_in = current.name
     end
 end
 def delete_account
@@ -89,15 +89,48 @@ def question1(i)
     puts answers1(i)[3].answer
     puts "==================================================="
     input = gets.chomp.to_s
+    $array << input
 end
 def answers1(i)
     Answer.where("question_id = '#{i}'")
+end
+
+def score
+    correct_array = ["11", "1", "16", "6", "81", "63", "Boston Celtics", "Charlotte Hornets", "Tim Duncan", "John Stockton", 0]
+    i = 0
+    user_score = 0
+    while 10 > i
+       if correct_array[i] ==  $array[i]
+            user_score += 1
+       end
+       i += 1
+    end
+    user_score
+end
+def presents_score(ten)
+    if ten == 10
+        puts "Hall of Fame!!!"
+        puts "10/10"
+    elsif ten >= 7 && 9 >= ten
+        puts "All Star!!!"
+        puts "#{ten}/10"
+    else
+        puts "Good Job."
+        puts "#{ten}/10"
+    end
+end
+def save_score(ten)
+    user_id = User.find_by(name: $logged_in).id
+    Score.create(score: ten, user_id: user_id)
 end
 def run
     welcome
     get_input
     log
     increment_questions
+    ten = score
+    presents_score(ten)
+    save_score
 end
 
 run
