@@ -1,6 +1,7 @@
 require_relative '../config/environment'
 require 'pry'
 $array = []
+
 def welcome
     logo = "
      ____  _____  ______        _          ___               _          
@@ -123,6 +124,42 @@ def save_score(ten)
     user_id = User.find_by(name: $logged_in).id
     Score.create(score: ten, user_id: user_id)
 end
+def end_of_game
+    puts "Please select a number."
+    puts "1. End game."
+    puts "2. Find scores by name."
+    input = gets.chomp.to_i
+    if input == 1
+        puts "================================================="
+        puts "Thanks for playing! BTW Go Lakers!"
+    elsif input == 2
+        get_scores
+    else
+        puts "================================================="
+        puts "Please select 1 or 2."
+        puts "================================================="
+        end_of_game
+    end
+end
+def get_scores
+    puts "Please enter the person's name whose score you want to lookup."
+    input = gets.chomp.to_s
+    
+    if User.find_by(name: input)
+         u = User.find_by(name: input).id
+    else
+        puts "Sorry, that user doesn't exist."
+        end_of_game
+    end
+    puts "================================================="
+    puts "This user's scores are..."
+    puts "================================================="
+    use = Score.where("user_id = '#{u}'")
+    that = use.map {|score| score.score}
+    puts that
+    puts "================================================="
+    end_of_game
+end
 def run
     welcome
     get_input
@@ -130,7 +167,8 @@ def run
     increment_questions
     ten = score
     presents_score(ten)
-    save_score
+    save_score(ten)
+    end_of_game
 end
 
 run
