@@ -72,24 +72,32 @@ def log
     puts "Instructions: Enter the answer you think is correct."
     puts "==================================================="
 end
-def question1
-    question = Question.find(1)
+def increment_questions
+    i = 1
+    while 10 >= i
+        question1(i)
+        i += 1
+    end
+end
+def question1(i)
+    puts "==================================================="    
+    question = Question.find(i)
     puts question.question
-    puts answers1[0].answer
-    puts answers1[1].answer
-    puts answers1[2].answer
-    puts answers1[3].answer
+    puts answers1(i)[0].answer
+    puts answers1(i)[1].answer
+    puts answers1(i)[2].answer
+    puts answers1(i)[3].answer
     puts "==================================================="
     input = gets.chomp.to_s
 end
-def answers1
-    Answer.where("question_id = '1'")
+def answers1(i)
+    Answer.where("question_id = '#{i}'")
 end
 def run
     welcome
     get_input
     log
-    question1
+    increment_questions
 end
 
 run
