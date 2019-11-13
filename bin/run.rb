@@ -1,5 +1,49 @@
 require_relative '../config/environment'
 require 'pry'
+
+def hall_of_fame
+puts "
+         -|
+       -' |
+     -'   | __().
+==wkm=====|'\\/   `.O__
+                    \\ `,
+                   _-^.
+                  `.  `---,
+                   :
+
+
+
+____________________________________
+///\\\\\\///\\\\\\///\\\\\\///\\\\\\///\\\\\\///\\\\\
+"
+end
+def all_star
+    puts "           o
+    /|   o         o
+    \\|=--            o
+       ##
+                       \\\\
+                    /   \\O
+                   O_/   T
+                   T    /|
+                   |\\  | |
+    _______________|_|________"
+end
+def good_job
+    puts "
+    |__  o\\
+    | W    \\O
+    |       |\\_         |\\
+    |      /-\\           \\O
+    |    /     \\          |
+    |                    /|
+    |                   |  \\
+    
+    ------------------------------------------------
+    "
+end
+
 $array = []
 
 def welcome
@@ -70,7 +114,7 @@ end
 def log
     puts "==================================================="
     puts "Use control + c to exit game at any time."
-    puts "Instructions: Enter the answer you think is correct."
+    puts "Instructions: Enter the answer you think is correct.(Exact spelling required!)"
     puts "==================================================="
 end
 def increment_questions
@@ -110,14 +154,23 @@ def score
 end
 def presents_score(ten)
     if ten == 10
+        puts "================================================="
+        hall_of_fame
         puts "Hall of Fame!!!"
         puts "10/10"
+        puts "================================================="
     elsif ten >= 7 && 9 >= ten
+        puts "================================================="
+        all_star
         puts "All Star!!!"
         puts "#{ten}/10"
+        puts "================================================="
     else
+        puts "================================================="
+        good_job
         puts "Good Job."
         puts "#{ten}/10"
+        puts "================================================="
     end
 end
 def save_score(ten)
@@ -142,12 +195,14 @@ def end_of_game
     end
 end
 def get_scores
+    puts "================================================="
     puts "Please enter the person's name whose score you want to lookup."
     input = gets.chomp.to_s
     
     if User.find_by(name: input)
          u = User.find_by(name: input).id
     else
+        puts "================================================="
         puts "Sorry, that user doesn't exist."
         end_of_game
     end
