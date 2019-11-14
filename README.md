@@ -5,10 +5,10 @@ After downloading the game, users can do the following:
 
   1. Create an account with a username
   2. Take the quiz 
-  3. See the scores of any user
+  3. Look up the scores of any user
   4. Delete your account
   
-The entirety of the quiz is completed from the command line, or the terminal on a Mac device. All the questions in the quiz were created by the makers of this quiz, Mason Waller and Grant Ferowich. 
+The entirety of the quiz is completed from the command line, or the terminal on a Mac machine. All the questions in the quiz were created by the makers of this quiz, Mason Waller and Grant Ferowich. 
 
 ======================================================================================================
 
@@ -43,7 +43,7 @@ Next, type this into the terminal and hit enter:
 
 ```bundle install```
 
-Finally, type the following into the terminal and hit enter again:
+Finally, type (or copy and paste) the following command into the terminal and hit enter again:
 
 ```ruby bin/run.rb``` 
 
