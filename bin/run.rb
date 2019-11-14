@@ -185,6 +185,7 @@ def end_of_game
     if input == 1
         puts "================================================="
         puts "Thanks for playing! BTW Go Lakers!"
+        exit
     elsif input == 2
         get_scores
     else
