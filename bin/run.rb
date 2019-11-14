@@ -114,7 +114,7 @@ end
 def log
     puts "==================================================="
     puts "Use control + c to exit game at any time."
-    puts "Instructions: Enter the answer you think is correct.(Exact spelling required!)"
+    puts "Instructions: Enter the letter of the answer you think is correct."
     puts "==================================================="
 end
 def increment_questions
@@ -128,10 +128,10 @@ def question1(i)
     puts "==================================================="    
     question = Question.find(i)
     puts question.question
-    puts answers1(i)[0].answer
-    puts answers1(i)[1].answer
-    puts answers1(i)[2].answer
-    puts answers1(i)[3].answer
+    puts "A.  " + answers1(i)[0].answer
+    puts "B.  " + answers1(i)[1].answer
+    puts "C.  " + answers1(i)[2].answer
+    puts "D.  " + answers1(i)[3].answer
     puts "==================================================="
     input = gets.chomp.to_s
     $array << input
@@ -141,11 +141,11 @@ def answers1(i)
 end
 
 def score
-    correct_array = ["11", "1", "16", "6", "81", "63", "Boston Celtics", "Charlotte Hornets", "Tim Duncan", "John Stockton", 0]
+    correct_array = ["D", "C", "A", "B", "C", "C", "A", "D", "A", "B", 0]
     i = 0
     user_score = 0
     while 10 > i
-       if correct_array[i] ==  $array[i]
+       if correct_array[i] ==  $array[i].upcase
             user_score += 1
        end
        i += 1
