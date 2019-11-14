@@ -29,7 +29,7 @@ The terminal will respond with information about the version of Ruby running on 
 ```ruby 2.6.1p33 (2019-01-30 revision 66950) [x86_64-darwin18]```
 Alternatively, if you need to download and install Ruby, you can do that with the [Official Ruby Language Downloads](https://www.ruby-lang.org/en/downloads/) page. You'll see instructions there for how to get Ruby set up on your machine! 
 
-Next, download this repository from GitHub.
+Next, download [this repository from GitHub](https://github.com/masonwaller/module-one-final-project-guidelines-austin-web-102819).
 
 Be mindful of where you put the repo onto your computer! You'll need to change into the directory where you just downloaded the repo, like this: 
 
