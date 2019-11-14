@@ -14,7 +14,7 @@ The entirety of the quiz is completed from the command line, or the terminal on 
 
 ## Technologies 
 
-The application is written in Ruby, so it requires Ruby on your device in order to take the quiz. These Ruby gems are needed to take the quiz [Ruby Gems](https://rubygems.org/): 
+The application is written in Ruby, so it requires Ruby on your device in order to take the quiz. These [Ruby Gems](https://rubygems.org/) are needed to take the quiz : 
 
 - [bundler](https://rubygems.org/gems/bundler)
 - [pry](https://rubygems.org/gems/pry)
