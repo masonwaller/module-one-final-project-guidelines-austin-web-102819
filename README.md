@@ -35,7 +35,7 @@ Be mindful of where you put the repo onto your computer! You'll need to change i
 
 ```cd your/path```
 
-For me, that looks like this: 
+For me, that path looks like this: 
 
 ```/Users/gferowich/Desktop/Mod1/module-one-final-project-guidelines-austin-web-102819```
 
